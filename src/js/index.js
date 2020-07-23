@@ -29,18 +29,34 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let name = variables.name;
+  let lastName = variables.lastname;
+  let city = variables.city;
+  let country = variables.country;
+  let role = variables.role;
+  let twitter = variables.twitter;
+  let github = variables.github;
+  let linkedin = variables.linkedin;
+  let insta = variables.instagram;
+  let condition;
+  if (variables.socialMediaPosition != "position-left") {
+    condition = "position-right";
+  } else {
+    condition = "position-left";
+  }
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>
+          <h1>${name} ${lastName}</h1>
+          <h2>${role}</h2>
+          <h3>${city}, ${country}</h3>
+          <ul class="${condition}">
+            <li><a href="https://twitter.com/${twitter}"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${github}"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/${linkedin}"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${insta}"><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -57,18 +73,18 @@ window.onload = function() {
     background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
     // this is the url for the profile avatar
     avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
-    // social media bar position (left or right)
-    socialMediaPosition: "position-left",
+    // social media bar position (left or right)-
+    socialMediaPosition: " ",
     // social media usernames
-    twitter: null,
-    github: "alesanchezr",
-    linkedin: null,
-    instagram: null,
-    name: null,
-    lastname: null,
-    role: null,
-    country: null,
-    city: null
+    twitter: " ",
+    github: " ",
+    linkedin: " ",
+    instagram: " ",
+    name: " ",
+    lastname: " ",
+    role: " ",
+    country: " ",
+    city: " "
   };
   render(window.variables); //render the card for the first time
 
